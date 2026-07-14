@@ -1,0 +1,56 @@
+# ============================================================
+# Universal .clang-format
+#   - C / C++ 兼用
+#   - Visual Studio / VS Code / CLion で同一表示
+#   - 保守的オプションのみ(clang-format 14+ で動作)
+#   - 改行コード・末尾改行は .gitattributes 側で管理する前提
+# ============================================================
+---
+Language: Cpp
+BasedOnStyle: LLVM
+
+# --- インデント ---
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never                 # 全環境で同一表示にするためスペース固定
+ContinuationIndentWidth: 4
+IndentCaseLabels: false
+NamespaceIndentation: None
+AccessModifierOffset: -4
+
+# --- 行幅 ---
+ColumnLimit: 100              # 保守的にするなら 80 に変更
+
+# --- 波括弧 ---
+BreakBeforeBraces: Attach     # 伝統的C(関数だけ改行)は Linux に変更
+
+# --- ポインタ / 参照 ---
+DerivePointerAlignment: false # 全OSS一致・必須
+PointerAlignment: Right       # C式 `int *p`。C++中心なら Left(`int* p`)へ
+
+# --- スペース ---
+SpaceBeforeParens: ControlStatements   # if (x) / func()
+
+# --- 制御文を1行に畳まない(レビュー・grep・デバッグ向き) ---
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+
+# --- 折返し / 整列 ---
+AlignAfterOpenBracket: Align
+AlignEscapedNewlines: Left    # マクロの \ を左寄せ = diffが暴れない
+BinPackParameters: false      # 引数1行1つ = 差分が読みやすい
+BinPackArguments: false
+
+# --- include: 並べ替えない(Cのビルドを壊さない) ---
+SortIncludes: false           # C++専用なら CaseInsensitive + IncludeBlocks: Regroup
+IncludeBlocks: Preserve
+
+# --- 空行 ---
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# --- パース ---
+Standard: Latest              # 最新構文を正しく解釈(古いコードにも安全)
