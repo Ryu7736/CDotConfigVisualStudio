@@ -1,0 +1,12 @@
+{
+  // このワークスペースを開いた人へ推奨する拡張機能。
+  // VS Code が「推奨拡張のインストール」を提案してくれる。
+  "recommendations": [
+    // C/C++ 言語サポート(IntelliSense + clang-format 同梱)
+    "ms-vscode.cpptools",
+    // .editorconfig の charset(BOM)/改行を VS Code に反映させる(必須)
+    "editorconfig.editorconfig",
+    // Claude Code の VS Code 連携
+    "anthropic.claude-code"
+  ]
+}

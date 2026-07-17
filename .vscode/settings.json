@@ -1,0 +1,25 @@
+{
+  // 文字コード・改行の細かな強制(BOM/CRLF)は EditorConfig 拡張が
+  // .editorconfig を読んで行う。ここではエディタ全体の既定だけ決める。
+  "files.autoGuessEncoding": false,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // 保存時に整形。C/C++ は .clang-format を使う。
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  // Markdown は行末スペースが意味を持つので保存時 trim を無効化
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+
+  // C/C++ 拡張に「リポジトリの .clang-format を使え」と指示
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_style": "file"
+}

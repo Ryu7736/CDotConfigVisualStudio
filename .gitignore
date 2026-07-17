@@ -431,3 +431,11 @@ FodyWeavers.xsd
 # DXライブラリが自動生成するログファイル
 Log.txt
 *.csv
+
+# Claude Code
+# 共有する: CLAUDE.md, .claude/settings.json は追跡する
+# 個人設定・ローカル履歴は無視する
+.claude/settings.local.json
+.claude/projects/
+.claude/todos/
+.claude/shell-snapshots/

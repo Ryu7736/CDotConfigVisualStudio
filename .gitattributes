@@ -1,0 +1,51 @@
+# ============================================================
+# .gitattributes
+#   - 改行コードの「正」はここ(.clang-format / .editorconfig と役割分担)
+#   - リポジトリ内部は常に LF で保存し、チェックアウト時に変換する
+#   - これにより OS・エディタ・Claude Code をまたいでも diff が暴れない
+# ============================================================
+
+# 既定: テキストとして自動判定し、チェックアウトは LF に統一
+*                text=auto eol=lf
+
+# --- C / C++ ソース ---
+# Windows / MSVC + 日本語ソースの慣習に合わせ CRLF を保つ
+# (.editorconfig の charset=utf-8-bom / end_of_line=crlf と一致)
+*.c              text eol=crlf
+*.cc             text eol=crlf
+*.cpp            text eol=crlf
+*.cxx            text eol=crlf
+*.h              text eol=crlf
+*.hpp            text eol=crlf
+*.hxx            text eol=crlf
+*.inl            text eol=crlf
+
+# --- Visual Studio プロジェクトファイル(VS が CRLF で管理する) ---
+*.sln            text eol=crlf
+*.vcxproj        text eol=crlf
+*.vcxproj.filters text eol=crlf
+*.props          text eol=crlf
+*.targets        text eol=crlf
+
+# --- スクリプト類(LF を強制:CRLF だと動かない環境がある) ---
+*.sh             text eol=lf
+
+# --- 画像・音声・フォント等のバイナリ(絶対に改行変換させない) ---
+*.png            binary
+*.jpg            binary
+*.jpeg           binary
+*.gif            binary
+*.bmp            binary
+*.ico            binary
+*.tga            binary
+*.dds            binary
+*.wav            binary
+*.mp3            binary
+*.ogg            binary
+*.mid            binary
+*.ttf            binary
+*.otf            binary
+*.dll            binary
+*.lib            binary
+*.exe            binary
+*.zip            binary

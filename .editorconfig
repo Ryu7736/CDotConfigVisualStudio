@@ -1,5 +1,31 @@
 root = true
 
-[*.{cpp,h}]
+# ============================================================
+# 既定(すべてのファイル)
+#   改行コードの最終的な「正」は .gitattributes 側にある。
+#   ここはエディタ表示・保存時の挙動をそろえる。
+# ============================================================
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# --- C / C++:Windows/MSVC + 日本語ソースは BOM付きUTF-8 + CRLF ---
+[*.{c,cc,cpp,cxx,h,hpp,hxx,inl}]
 charset = utf-8-bom
 end_of_line = crlf
+
+# --- Visual Studio プロジェクトファイルも CRLF ---
+[*.{sln,vcxproj,filters,props,targets}]
+end_of_line = crlf
+
+# --- Markdown:行末スペースが改行(hard break)を意味するので trim しない ---
+[*.md]
+trim_trailing_whitespace = false
+
+# --- YAML:インデント2が慣習 ---
+[*.{yml,yaml}]
+indent_size = 2
